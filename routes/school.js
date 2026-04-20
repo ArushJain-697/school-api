@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-// Helper: Haversine distance (km mein)
+
 function calcDistance(lat1, lon1, lat2, lon2) {
   const R = 6371;
   const dLat = ((lat2 - lat1) * Math.PI) / 180;
@@ -15,11 +15,11 @@ function calcDistance(lat1, lon1, lat2, lon2) {
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-// POST /addSchool
+
 router.post('/addSchool', (req, res) => {
   const { name, address, latitude, longitude } = req.body;
 
-  // Validation
+
   if (!name || !address || latitude == null || longitude == null)
     return res.status(400).json({ error: 'All fields are required' });
 
@@ -36,7 +36,7 @@ router.post('/addSchool', (req, res) => {
   });
 });
 
-// GET /listSchools?latitude=xx&longitude=yy
+
 router.post('/listSchools', (req, res) => {
   const { latitude, longitude } = req.body;
 
