@@ -37,8 +37,8 @@ router.post('/addSchool', (req, res) => {
 });
 
 // GET /listSchools?latitude=xx&longitude=yy
-router.get('/listSchools', (req, res) => {
-  const { latitude, longitude } = req.query;
+router.post('/listSchools', (req, res) => {
+  const { latitude, longitude } = req.body;
 
   if (!latitude || !longitude || isNaN(latitude) || isNaN(longitude))
     return res.status(400).json({ error: 'Valid latitude and longitude required' });
